@@ -50,12 +50,12 @@ deve retornar uma mensagem de "usuario conectado" ou "usuário ou senha incorret
 ✔ Excluir usuário por id; @done(20-08-16 20:11)
 
 No arquivo students.js crie as seguintes funções
-✔ Salvar novo aluno;
+✔ Salvar novo aluno; @done(20-08-17 18:56)
 ✔ Listar alunos em formato de tabela; @done(20-08-16 19:56)
-✔ Buscar um aluno por nome e/ou id;
-☐ Editar os dados de um aluno específico;
+✔ Buscar um aluno por nome e/ou id; @done(20-08-18 21:25)
+✔ Editar os dados de um aluno específico; @done(20-08-18 21:10)
 ✔ Excluir um aluno por id; @done(20-08-16 20:15)
-☐ Suba o projeto para o github
+✔ Suba o projeto para o github
 
 Observação:
 Você deve validar os dados obrigatórios antes de salvar;

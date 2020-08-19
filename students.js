@@ -1,28 +1,13 @@
-const students = [{
-    id: 36,
-    name: 'Diogo',
-    gender: 'M',
-    dateOfBirth: '2000/10/23',
-    classes: '3B',
-    course: 'ALGORITMO'
-  },
-  {
-    id: 77,
-    name: 'Luiza',
-    gender: 'F',
-    dateOfBirth: '1990/04/01',
-    classes: '6A',
-    course: 'Java'
-}];
+const students = [];
 
-/*
 
 function create(name, gender, dateOfBirth, classes, course) {
+
+  const id = students.length;
 
   if(name == null || gender == null || dateOfBirth == null || classes == null || course == null) {
       console.log("All fields must be complete.");
   } else {
-      id = Math.floor(1000 * Math.random() + 1);
       name.toUpperCase()
       gender.toUpperCase();
       dateOfBirth.toUpperCase();
@@ -33,31 +18,55 @@ function create(name, gender, dateOfBirth, classes, course) {
         gender, dateOfBirth, classes, course});
     }
 }
-*/
 
-function findByPk(id, name) {
+
+
+
+function findByPk(id) {
 
   const findId = students.find(idUser => idUser.id == id );
 
-  const findByName = students.find(nameUser => nameUser.name == name);
   
-  if(findId && findByName) {
-    console.log(`Usuário encontrado com o id: ${id} \n ${name}`);
+  
+  if(findId) {
+    console.log(`User found: ${id}`);
   }
   else {
-    console.log('Usuário não encontrado com este id ou nome.')
+    console.log('User not found with this id.')
   }
      
 }
 
 
+function findOne(name) {
+
+  const findByName = students.find(nameUser => nameUser.name == name);
+
+    
+  if(findByName) {
+    console.log(`User found: ${name}`);
+  }
+  else {
+    console.log('User not found with this name.')
+  }
+}
 
 
+function upDate(id, name, gender, dateOfBirth, classes, course) {
+
+   name = name.toUpperCase()
+   gender = gender.toUpperCase();
+   dateOfBirth = dateOfBirth.toUpperCase();
+   classes = classes.toUpperCase();
+   course = course.toUpperCase();
+
+   const student = students.find(studentId => studentId.id == id);
+   const index = students.indexOf(student);
+
+  students[index] = { id, name, gender, dateOfBirth, classes, course };
+}
 
 
-
-
-/*
 function index() {
   console.table(students);
 }
@@ -73,11 +82,9 @@ function destroy(id) {
 destroy(2);
 
 index();
-*/
 
-//create( "Diogo", "M", "2000/10/23", "3B", "ALGORITMO" );
-//create( "Luiza", "F", "1990/04/01", "6A", "Java" );
-
-//findByPk(77);
-findByPk(30, "Diogo");
-//console.log(students);
+create( "Diogo", "m", "2000/10/23", "3b", "javascript" );
+findOne("Diogo");
+upDate(1, "Sophia", "f", "2012/08/21", "6a", "c");
+findByPk(77);
+console.log(students);

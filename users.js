@@ -1,30 +1,33 @@
 const users = [];
 
 
-function create(email, senha, admin) {
+function create(email, password, admin) {
 
   const e = typeof(email);
-  const s = typeof(senha);
+  const p = typeof(password);
   const a = typeof(admin);
 
-  id = Math.floor(1000 * Math.random() + 1);
+  const id = users.length;
 
-  if (email, senha, admin != null) {
-      if (e == s) {
+  email = email.toUpperCase();
+  password = password.toUpperCase();
+
+  if (email, password, admin != null) {
+      if (e == p) {
           users.push({
               id,
-              email: email.toUpperCase(),
-              senha: senha.toUpperCase(),
+              email,
+              password,
               admin: admin
           })
-          console.log('Usuário criado com sucesso!');
+          console.log('User successfully created!');
 
       } else {
-          console.log('O email ou senha está incorreto.');
+          console.log('Email or password is incorrect.');
       }
 
   } else {
-    console.log("Todos os campos devem estar preenchidos");
+    console.log("All fields must be complete.");
   }
 }
 
@@ -36,14 +39,13 @@ function findByPk(id, email) {
   const findEmail = users.find(emailUser => emailUser.email == email );
   
   if(findId && findEmail) {
-    console.log(`Usuário encontrado com o id: ${id} \n e o email: ${email}`);
+    console.log(`User found with id: ${id} \n and the email: ${email}`);
   }
   else {
-    console.log('Usuário não encontrado com este id.')
+    console.log('User not found with this id or e-mail')
   }
      
 }
-
 
 function login(email, password){
   const userEmail = users.find(idUserEmail => idUserEmail.email == email);
@@ -51,20 +53,18 @@ function login(email, password){
   if (userEmail){
       const findUserPassword = users[index].password == password;
       if (findUserPassword){
-          console.log(`Usuário ${email} conectado`);
+          console.log(`User ${email} connected`);
       }else{
-          console.log("Senha inválida");
+          console.log("Invalid password");
       }
   }
   else 
-      console.log("Usuário não encontrado");
+      console.log("User not found");
 }
-
 
 function index() {
   console.table(users);
 }
-
 
 function destroy(id) {
   for(let user of users) {
@@ -84,7 +84,9 @@ index();
 
 login('daniele_oli_lucas@hotmail.com', '123456' );
 
+
 create("daniele_oli_lucas@hotmail.com", "123456", false);
+
 
 
 
