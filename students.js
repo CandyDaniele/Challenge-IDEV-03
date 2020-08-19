@@ -5,14 +5,14 @@ function create(name, gender, dateOfBirth, classes, course) {
 
   const id = students.length;
 
-  if(name == null || gender == null || dateOfBirth == null || classes == null || course == null) {
+  if(name == null || gender == null || dateOfBirth == null || classes == null) {
       console.log("All fields must be complete.");
   } else {
-      name.toUpperCase()
-      gender.toUpperCase();
-      dateOfBirth.toUpperCase();
-      classes.toUpperCase();
-      course.toUpperCase();
+      name = name.toUpperCase()
+      gender = gender.toUpperCase();
+      dateOfBirth = dateOfBirth.toUpperCase();
+      classes = classes.toUpperCase();
+      course = course.toUpperCase();
 
       students.push({id, name,
         gender, dateOfBirth, classes, course});
@@ -32,7 +32,7 @@ function findByPk(id) {
     console.log(`User found: ${id}`);
   }
   else {
-    console.log('User not found with this id.')
+    console.log('User not found with this id.');
   }
      
 }
@@ -40,7 +40,7 @@ function findByPk(id) {
 
 function findOne(name) {
 
-  const findByName = students.find(nameUser => nameUser.name == name);
+  const findByName = students.find(nameUser => nameUser.name == name.toUpperCase());
 
     
   if(findByName) {
@@ -52,7 +52,7 @@ function findOne(name) {
 }
 
 
-function upDate(id, name, gender, dateOfBirth, classes, course) {
+function upDate(id, name, gender, dateOfBirth, classes, course="") {
 
    name = name.toUpperCase()
    gender = gender.toUpperCase();
@@ -61,9 +61,15 @@ function upDate(id, name, gender, dateOfBirth, classes, course) {
    course = course.toUpperCase();
 
    const student = students.find(studentId => studentId.id == id);
-   const index = students.indexOf(student);
 
-  students[index] = { id, name, gender, dateOfBirth, classes, course };
+   if(student){
+    const index = students.indexOf(student);
+
+    students[index] = { id, name, gender, dateOfBirth, classes, course };
+   }else {
+     create(name,name, gender, dateOfBirth, classes, course);
+   }
+
 }
 
 
@@ -79,12 +85,13 @@ function destroy(id) {
   }
 }
 
-destroy(2);
+// destroy(2);
 
-index();
+// index();
 
 create( "Diogo", "m", "2000/10/23", "3b", "javascript" );
-findOne("Diogo");
-upDate(1, "Sophia", "f", "2012/08/21", "6a", "c");
-findByPk(77);
+  findOne("Diogo");
+// console.log(students);
+// upDate(1, "Sophia", "f", "2012/08/21", "6a");
+// findByPk(77);
 console.log(students);

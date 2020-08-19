@@ -32,23 +32,21 @@ function create(email, password, admin) {
 }
 
 
-function findByPk(id, email) {
+function findByPk(id=null, email=null) {
 
-  const findId = users.find(idUser => idUser.id == id );
+  const findUser = users.find(user => user.id == id || user.email == email.toUpperCase());
 
-  const findEmail = users.find(emailUser => emailUser.email == email );
-  
-  if(findId && findEmail) {
-    console.log(`User found with id: ${id} \n and the email: ${email}`);
+  if(findUser) {
+    console.log(`User found with id: ${findUser.id} \n and the email: ${findUser.email}`);
   }
   else {
-    console.log('User not found with this id or e-mail')
+    console.log('User not found with this id or e-mail');
   }
      
 }
 
 function login(email, password){
-  const userEmail = users.find(idUserEmail => idUserEmail.email == email);
+  const userEmail = users.find(idUserEmail => idUserEmail.email == email.toUpperCase());
   const index = users.indexOf(userEmail);
   if (userEmail){
       const findUserPassword = users[index].password == password;
@@ -75,19 +73,21 @@ function destroy(id) {
 }
 
 
- findByPk(1, "daniele_oli_lucas@hotmail.com");
 
 
-destroy(2);
 
-index();
+// destroy(2);
 
-login('daniele_oli_lucas@hotmail.com', '123456' );
+// index();
+
+
 
 
 create("daniele_oli_lucas@hotmail.com", "123456", false);
+findByPk(2,"daniele_oli_lucas@hotmail.com");
+// login('daniele_oli_lucas@hotmail.com', '123456' );
 
 
 
 
-console.log(users);
+// console.log(users);
